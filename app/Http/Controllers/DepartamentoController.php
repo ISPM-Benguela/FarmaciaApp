@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Departamento;
 
 class DepartamentoController extends Controller
 {
@@ -13,7 +14,9 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        return view('departamento.index');
+        return view('departamento.index')->with([
+            'departamentos' => Departamento::all()
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('departamento.create');
     }
 
     /**
@@ -34,7 +37,14 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'departamento' => 'required|unique:departamentos|max:255'
+        ]);
+        $departamento = new Departamento;
+        $departamento->departamento = $request->input('departamento');
+        $departamento->save();
+
+        return redirect()->route('departamento.index')->with('success', 'Departamento cadastrado com sucesso.');
     }
 
     /**
@@ -56,7 +66,10 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departamento = Departamento::findOrFail($id); 
+        return view('departamento.edit')->with([
+            'departamento' => $departamento
+        ]);
     }
 
     /**
@@ -68,7 +81,11 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $departamento = Departamento::findOrFail($id); 
+        $departamento->departamento = $request->input('departamento');
+        $departamento->save();
+
+        return redirect()->route('departamento.index')->with('success', 'Departamento actualizado com sucesso.');
     }
 
     /**
@@ -79,6 +96,11 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $departamento = Departamento::findOrFail($id); 
+        $departamento->delete();
+
+        return redirect()->route('departamento.index')
+            ->with('error',
+             'Departamento eliminado com sucesso.');
     }
 }

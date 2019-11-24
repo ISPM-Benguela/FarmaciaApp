@@ -24,4 +24,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('funcionario', 'FuncionarioController');
     Route::post('funcionarios/{id}/update', 'FuncionarioController@update')->name('actualizar');
     Route::get('funcionarios/{id}/destroy', 'FuncionarioController@destroy')->name('destroy');
+
+    Route::post('departamentos/{id}/update', 'DepartamentoController@update')->name('actualizar.departamento');
+    Route::get('departamentos/{id}/destroy', 'DepartamentoController@destroy')->name('destroy');
 });

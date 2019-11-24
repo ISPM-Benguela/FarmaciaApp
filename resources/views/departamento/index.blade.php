@@ -2,95 +2,39 @@
 
 @section('principal')
     <h3>Departamentos</h3>
-    <button type="submit" class="btn btn-outline-default"><i class="fa fa-plus"></i> Criar departamento</button>
+    <a href="{{ route('departamento.create') }}" class="btn btn-default"><i class="fa fa-plus"></i> Criar departamento</a>
 
     <hr>
 
-    <div class="row mt">
+    <div class="row mb">
             <div class="col-md-12">
-              <div class="content-panel">
+              <div class="content-panel ">
                 <table class="table table-striped table-advance table-hover">
-                  <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
+                  <h4><i class="fa fa-angle-right"></i> Departamentos</h4>
                   <hr>
                   <thead>
                     <tr>
-                      <th><i class="fa fa-bullhorn"></i> Company</th>
-                      <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                      <th><i class="fa fa-bookmark"></i> Profit</th>
-                      <th><i class=" fa fa-edit"></i> Status</th>
+                      <th><i class="fa fa-bullhorn"></i> Codigo</th>
+                      <th class="hidden-phone"><i class="fa fa-question-circle"></i> Departamento</th>
+ 
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
+
+                    @foreach ($departamentos as $departamento)
                     <tr>
                       <td>
-                        <a href="basic_table.html#">Company Ltd</a>
+                        <a href="basic_table.html#">{{ $departamento->id }}</a>
                       </td>
-                      <td class="hidden-phone">Lorem Ipsum dolor</td>
-                      <td>12000.00$ </td>
-                      <td><span class="label label-info label-mini">Due</span></td>
+                      <td class="hidden-phone">{{ $departamento->departamento }}</td>
+                      
                       <td>
-                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                        <a href="{{ route('departamento.edit', $departamento->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ route('destroy', $departamento->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <a href="basic_table.html#">
-                          Dashio co
-                          </a>
-                      </td>
-                      <td class="hidden-phone">Lorem Ipsum dolor</td>
-                      <td>17900.00$ </td>
-                      <td><span class="label label-warning label-mini">Due</span></td>
-                      <td>
-                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <a href="basic_table.html#">
-                          Another Co
-                          </a>
-                      </td>
-                      <td class="hidden-phone">Lorem Ipsum dolor</td>
-                      <td>14400.00$ </td>
-                      <td><span class="label label-success label-mini">Paid</span></td>
-                      <td>
-                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <a href="basic_table.html#">Dashio ext</a>
-                      </td>
-                      <td class="hidden-phone">Lorem Ipsum dolor</td>
-                      <td>22000.50$ </td>
-                      <td><span class="label label-success label-mini">Paid</span></td>
-                      <td>
-                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <a href="basic_table.html#">Total Ltd</a>
-                      </td>
-                      <td class="hidden-phone">Lorem Ipsum dolor</td>
-                      <td>12120.00$ </td>
-                      <td><span class="label label-warning label-mini">Due</span></td>
-                      <td>
-                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                      </td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -98,5 +42,9 @@
             </div>
             <!-- /col-md-12 -->
           </div>
+          <br>
+          <br>
+          <br>
+          <br>
           <br>
 @endsection
