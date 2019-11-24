@@ -17,6 +17,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::group(['prefix' => 'admin'], function(){
+    
+    Route::get('/', 'HomeController@admin')->name('admin');
+    
     Route::get('meu-perfil', 'PerfilController@index')->name('profile');
 
     Route::resource('departamento', 'DepartamentoController');
@@ -27,4 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('departamentos/{id}/update', 'DepartamentoController@update')->name('actualizar.departamento');
     Route::get('departamentos/{id}/destroy', 'DepartamentoController@destroy')->name('destroy');
+
+    Route::resource('produto', 'ProdutoController');
+    });
 });

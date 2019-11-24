@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produto;
 
 class ProdutoController extends Controller
 {
@@ -13,7 +14,9 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        return view('produtos.index')->with([
+            'produtos' => Produto::all()
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('produtos.create');
     }
 
     /**
@@ -34,7 +37,32 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nomeFile = null;
+        $upload = null;
+
+        $this->validate($request, [
+            'name' => 'required|unique:produtos',
+            'description' => 'required',
+            'image' => 'required|image',
+            'price' => 'required',
+            'brand' => 'required',
+            'stock' => 'required',
+        ]);
+       
+         $imagem = $request->file('image');
+         $upload =  $request->file('image')->getClientOriginalName();
+         $file = $imagem->move('produtos', $upload);
+         
+        $produto = Produto::create([
+            'name' => $request->input('name'),
+            'brand' => $request->input('brand'),
+            'description' => $request->input('description'),
+            'image' => $file,
+            'price' => $request->input('price'),
+            'stock' => $request->input('stock'),
+        ]);
+
+        return redirect()->route('produto.index')->with('success','Produto cadastrado com sucesso');
     }
 
     /**
