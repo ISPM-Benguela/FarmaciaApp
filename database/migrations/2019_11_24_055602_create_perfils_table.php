@@ -16,6 +16,7 @@ class CreatePerfilsTable extends Migration
         Schema::create('perfils', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
+            $table->string('tipo')->nullable();
             $table->string('imagem')->default('perfil/default.jpg');
             $table->timestamps();
         });

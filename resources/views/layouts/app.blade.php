@@ -27,6 +27,7 @@
   <link href="{{ asset('css/style.css')}}" rel="stylesheet">
   <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet">
   <script src="{{ asset('lib/chart-master/Chart.js')}}"></script>
+  <link href="{{ asset('css/main.css')}}" rel="stylesheet">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -105,7 +106,7 @@
               </a>
             <ul class="sub">
               <li><a href="{{ route('departamento.index') }}"><i class="fa fa-users"></i> Departamento</a></li>
-              <li><a href="general.html"><i class="fa fa-users"></i> Funcionarios</a></li>
+              <li><a href="{{ route('funcionario.index') }}"><i class="fa fa-users"></i> Funcionarios</a></li>
               <li><a href="buttons.html"><i class="fa fa-cubes"></i> Produtos</a></li>
               <li><a href="panels.html"><i class="fa fa-folder-o"></i> Categoria</a></li>
             </ul>
@@ -214,6 +215,7 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
+            @include('includes.message')
             @yield('principal')
         </section>
         <!-- /wrapper -->
@@ -248,15 +250,16 @@
   <!--script for this page-->
   <script src="{{ asset('lib/sparkline-chart.js')}}"></script>
   <script src="{{ asset('lib/zabuto_calendar.js')}}"></script>
+  @if (Session::has('success'))
   <script type="text/javascript">
     $(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
+        title: 'Farmacio sistema de mensagem!',
         // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo.',
+        text: {!! Session::get('success') !!},
         // (string | optional) the image to display on the left
-        image: 'img/ui-sam.jpg',
+        image: 'img/icons/feeds.jpeg',
         // (bool | optional) if you want it to fade out on its own or just sit there
         sticky: false,
         // (int | optional) the time you want it to be alive for before fading out
@@ -268,6 +271,8 @@
       return false;
     });
   </script>
+
+  @endif
   <script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({

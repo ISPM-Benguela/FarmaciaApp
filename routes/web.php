@@ -20,4 +20,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('meu-perfil', 'PerfilController@index')->name('profile');
 
     Route::resource('departamento', 'DepartamentoController');
+
+    Route::resource('funcionario', 'FuncionarioController');
+    Route::post('funcionarios/{id}/update', 'FuncionarioController@update')->name('actualizar');
+    Route::get('funcionarios/{id}/destroy', 'FuncionarioController@destroy')->name('destroy');
 });

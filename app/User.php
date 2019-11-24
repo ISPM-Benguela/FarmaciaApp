@@ -39,6 +39,10 @@ class User extends Authenticatable
 
     public function departamento()
     {
-        return $this->belongsTo(Departamento::class);
+        return $this->belongsTo('App\Departamento');
+    }
+    public function perfil()
+    {
+        return $this->hasOne("Comercio\Perfil");
     }
 }
