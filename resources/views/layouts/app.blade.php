@@ -47,7 +47,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>FARM<span>BOA</span></b></a>
+      <a href="/" class="logo"><b>FARM<span>BOA</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -90,10 +90,10 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/perfil/default.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
-            <a class="active" href="index.html">
+            <a class="active" href="/">
               <i class="fa fa-dashboard"></i>
               <span>Painel de Controle</span>
               </a>
@@ -104,6 +104,7 @@
               <span>EMPRESA</span>
               </a>
             <ul class="sub">
+              <li><a href="{{ route('departamento.index') }}"><i class="fa fa-users"></i> Departamento</a></li>
               <li><a href="general.html"><i class="fa fa-users"></i> Funcionarios</a></li>
               <li><a href="buttons.html"><i class="fa fa-cubes"></i> Produtos</a></li>
               <li><a href="panels.html"><i class="fa fa-folder-o"></i> Categoria</a></li>
@@ -208,9 +209,15 @@
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
+  
+
+    <!--main content start-->
     <section id="main-content">
-      @yield('principal')
-    </section>
+        <section class="wrapper">
+            @yield('principal')
+        </section>
+        <!-- /wrapper -->
+      </section>
     <!--main content end-->
     <!--footer start-->
     <footer class="site-footer">

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('principal')
-<section class="wrapper">
     <div class="row">
       <div class="col-lg-9 main-chart">
         <!--CUSTOM CHART START -->
@@ -177,6 +176,4 @@
       </div>
       <!-- /col-lg-3 -->
     </div>
-    <!-- /row -->
-  </section>
 @endsection
