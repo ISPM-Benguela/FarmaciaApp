@@ -10,11 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'SiteController@index')->name('home');
+
+Route::get('/contactos', 'SiteController@contactos')->name('contactos');
+
+Route::get('/loja', 'SiteController@loja')->name('loja');
+
+Route::get('/loja/produto','SiteController@produto')->name('produto');
+
+Route::get('/carrinho', 'SiteController@carrinho')->name('carrinho');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'admin'], function(){

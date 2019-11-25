@@ -10,6 +10,7 @@ class Produto extends Model
         'name',
         'price',
         'brand',
+        'image',
         'stock',
         'description', 
     ];
