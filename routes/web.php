@@ -39,6 +39,21 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('departamentos/{id}/update', 'DepartamentoController@update')->name('actualizar.departamento');
     Route::get('departamentos/{id}/destroy', 'DepartamentoController@destroy')->name('destroy');
 
+    Route::post('produto/{id}/update', 'ProdutoController@update')->name('produto.actulizar');
+    Route::get('produto/{id}/destroy', 'ProdutoController@destroy')->name('produto.eliminar');
+
+    /*
+    Route::get('produto', 'ProdutoController@index')->name('produto.index');
+    Route::get('produto/create', 'ProdutoController@create')->name('produto.create');
+    Route::get('produto/{id}', 'ProdutoController@show')->name('produto.show');
+    Route::post('produto', 'ProdutoController@store')->name('produto.store');
+    Route::get('produto/{id}', 'ProdutoController@edit')->name('produto.edit');
+    Route::get('produto/{id/destroy}', 'ProdutoController@destroy')->name('produto.destroy');*/
+   
     Route::resource('produto', 'ProdutoController');
+
+   
+
+    
     });
 });

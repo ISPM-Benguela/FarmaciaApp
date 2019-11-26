@@ -37,6 +37,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $nomeFile = null;
         $upload = null;
 
@@ -44,6 +45,7 @@ class ProdutoController extends Controller
             'name' => 'required|unique:produtos',
             'description' => 'required',
             'image' => 'required|image',
+            'exp_data' => 'required',
             'price' => 'required',
             'brand' => 'required',
             'stock' => 'required',
@@ -60,6 +62,7 @@ class ProdutoController extends Controller
             'image' => $file,
             'price' => $request->input('price'),
             'stock' => $request->input('stock'),
+            'exp_data' => $request->input('exp_data')
         ]);
 
         return redirect()->route('produto.index')->with('success','Produto cadastrado com sucesso');
@@ -84,7 +87,12 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+
+       
+        return view('produtos.edit')->with([
+            'produto' => $produto
+        ]);
     }
 
     /**
@@ -96,7 +104,102 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      
+        $file = "";
+        $image = "";
+        $name = "";
+        $data = null;
+        $brand = "";
+        $price = "";
+        $stock = "";
+        $description = "";
+
+        $produto = Produto::find($id);
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $file = $image->getClientOriginalName();
+        } else {
+            $file = $produto->image;
+        }
+        if(!$request->input('price')){
+            $price = $produto->price;
+        } else {
+            $price = $request->input('price');
+        }
+
+        if(!$request->input('brand')){
+            $brand = $produto->brand;
+        } else {
+            $brand = $request->input('brand');
+        }
+       
+        $produto->name = $request->input('name');
+        $produto->image = $file;
+        $produto->price = $price;
+        $produto->brand = $brand;
+        $produto->save();
+
+        return redirect()->back();
+
+       
+        $file = "";
+        $image = "";
+        $name = "";
+        $data = null;
+        $brand = "";
+        $price = "";
+        $stock = "";
+        $description = "";
+        
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $file = $image->getClientOriginalName();
+        } else {
+            $file = $produto->image;
+        }
+        if($request->input('name')){
+
+            $name = $request->input('name');
+        } else {
+            $name = $produto->name;
+        }
+        if($request->input('exp_data')){
+            $data = $request->input('exp_data');
+        } else {
+            $data = $produto->exp_data;
+        }
+        if($request->input('price')){
+            $brand = $request->input('price');
+        } else {
+            $brand = $produto->brand;
+        }
+        if($request->input('brand')){
+            $brand = $request->input('brand');
+        } else {
+            $brand = $produto->brand;
+        }
+        if($request->input('stock')){
+            $stock = $request->input('stock');
+        } else {
+            $stock = $produto->stock;
+        }
+        if($request->input('description')){
+            $description = $request->input('description');
+        } else {
+            $description = $produto->description;
+        }
+        
+        $produto->name = $name;
+        $produto->image = $file;
+        $produto->price = $price;
+        $produto->brand = $brand;
+        $produto->stock = $stock;
+        $produto->description = $description;
+
+        $produto->refresh();
+
+        return redirect()->route('produto.edit')->with('success', 'Produto actualizado com sucess.');
     }
 
     /**
@@ -107,6 +210,9 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produto = Produto::find($id);
+        $produto->delete();
+
+        return redirect()->route('produto.index')->with('error', 'Produto eliminado com sucesso.');
     }
 }

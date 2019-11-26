@@ -42,7 +42,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="index.html" class="js-logo-clone">Farmacia</a>
+              <a href="/" class="js-logo-clone">Farmacia</a>
             </div>
           </div>
           <div class="main-nav d-none d-lg-block">
@@ -58,7 +58,7 @@
           <div class="icons">
               <a href="{{ route('login') }}" class="icons-btn d-inline-block mr-3">Entrar</a>
               <a href="{{ route('login') }}" class="icons-btn d-inline-block">Criar conta</a>
-            <a href="cart.html" class="icons-btn d-inline-block bag">
+            <a href="{{ route('carrinho') }}" class="icons-btn d-inline-block bag">
               <span class="icon-shopping-bag"></span>
               <span class="number">2</span>
             </a>

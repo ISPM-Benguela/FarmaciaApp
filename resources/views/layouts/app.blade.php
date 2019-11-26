@@ -28,6 +28,7 @@
   <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet">
   <script src="{{ asset('lib/chart-master/Chart.js')}}"></script>
   <link href="{{ asset('css/main.css')}}" rel="stylesheet">
+  <link href="{{ asset('css/gijgo.min.css')}}" rel="stylesheet">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -166,6 +167,7 @@
   <script src="{{ asset('lib/jquery.scrollTo.min.js')}}"></script>
   <script src="{{ asset('lib/jquery.nicescroll.js')}}" type="text/javascript"></script>
   <script src="{{ asset('lib/jquery.sparkline.js')}}"></script>
+  <script src="{{ asset('js/gijgo.min.js')}}"></script>
   <!--common script for all pages-->
   <script src="{{ asset('lib/common-scripts.js')}}"></script>
   <script type="text/javascript" src="{{ asset('lib/gritter/js/jquery.gritter.js')}}"></script>
@@ -196,6 +198,12 @@
   </script>
 
   @endif
+
+  <script type="application/javascript">
+      $('#datepicker').datepicker({
+          uiLibrary: 'bootstrap4'
+      });
+  </script>
   <script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({

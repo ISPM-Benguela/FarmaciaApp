@@ -17,9 +17,10 @@ class CreateProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image')->default('produtos/default.jpeg');
-            $table->decimal('price', 10,2);
+            $table->decimal('price', 10, 2);
             $table->string('brand');
             $table->integer('stock');
+            $table->date('exp_data')->nullable();
             $table->text('description');
             $table->timestamps();
         });

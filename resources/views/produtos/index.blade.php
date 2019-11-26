@@ -21,6 +21,7 @@
                       <th class="hidden-phone"><i class="fa fa-question-circle"></i> Produto</th>
                       <th><i class="fa fa-bookmark"></i> Preço</th>
                       <th><i class=" fa fa-edit"></i> Stock</th>
+                      <th><i class=" fa fa-clock-o"></i> Data vencimento</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -34,9 +35,10 @@
                       <td class="hidden-phone">{{ $produto->name }}</td>
                       <td>{{ $produto->price }} </td>
                       <td><span class="label label-info label-mini">{{ $produto->stock }}</span></td>
+                      <td>{{ $produto->exp_data }}</td>
                       <td>
                         <a href="{{ route('produto.edit', $produto->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a href="{{ route('destroy', $produto->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                        <a href="{{ route('produto.eliminar', $produto->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       </td>
                     </tr>
                     @endforeach
