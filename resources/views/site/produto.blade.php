@@ -24,7 +24,7 @@
                   <p>{{ $produto->description }}</p>
                   
       
-                  <p><strong class="text-primary h4">{{ $produto->price }} Kz</strong></p>
+                  <p><strong class="text-primary h4">{{ $produto->price }}  Kz</strong></p>
       
                   
                   <form action="{{ route('carrinho.add', $produto->id) }}" method="POST">

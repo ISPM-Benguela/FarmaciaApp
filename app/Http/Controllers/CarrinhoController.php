@@ -25,7 +25,7 @@ class CarrinhoController extends Controller
             'quantidade' => $quantidade
         ]);
   
-        return redirect()->route('home')->with('success', 'Produto adicionaro ao carrinho');
+        return redirect()->route('site.index')->with('success', 'Produto adicionaro ao carrinho');
       }else {
           return "Nao estas logado";
       }

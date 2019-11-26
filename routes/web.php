@@ -10,7 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'SiteController@index')->name('home');
+
+Route::get('/', 'SiteController@index')->name('site.index');
+
+Route::get('/home', function(){
+    return redirect()->route('site.index');
+});
+
+
 
 Route::get('/contactos', 'SiteController@contactos')->name('contactos');
 
@@ -18,7 +25,9 @@ Route::get('/loja', 'SiteController@loja')->name('loja');
 
 Route::get('/loja/produto/{id}','SiteController@produto')->name('loja.visualizar');
 
+Route::get('meu-perfil', 'PerfilController@perfilCliente')->name('profile.cliente');
 
+Route::post('meu-perfil/actualizar/', 'PerfilController@actualizar')->name('perfil.actualizar');
 
 Route::get('/carrinho', 'SiteController@carrinho')->name('carrinho');
 
@@ -30,9 +39,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'admin'], function(){
     
-    Route::get('/', 'HomeController@admin')->name('admin');
+
+    Route::get('/', 'HomeController@admin')->name('admin.index');
     
-    Route::get('meu-perfil', 'PerfilController@index')->name('profile');
+    Route::get('meu-perfil', 'PerfilController@index')->name('perfil.dashboard');
 
     Route::resource('departamento', 'DepartamentoController');
 

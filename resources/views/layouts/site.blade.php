@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{{asset('site/css/aos.css')}}">
 
   <link rel="stylesheet" href="{{asset('site/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('css/site.css')}}">
 
 </head>
 
@@ -56,12 +57,33 @@
             </nav>
           </div>
           <div class="icons">
+
+              @guest
               <a href="{{ route('login') }}" class="icons-btn d-inline-block mr-3">Entrar</a>
-              <a href="{{ route('login') }}" class="icons-btn d-inline-block">Criar conta</a>
-            <a href="{{ route('carrinho') }}" class="icons-btn d-inline-block bag">
-              <span class="icon-shopping-bag"></span>
-              <span class="number">2</span>
-            </a>
+              <a href="{{ route('register') }}" class="icons-btn d-inline-block">Criar conta</a>
+              @else 
+              @if(Auth::user()->nivel == 3)
+              <a href="{{ route('profile.cliente') }}" class="icons-btn d-inline-block mr-3">{{ Auth::user()->name }}</a>
+              @else
+              <a href="{{ route('perfil.dashboard') }}" class="icons-btn d-inline-block mr-3">{{ Auth::user()->name }}</a>
+              @endif
+              <a class="icons-btn d-inline-block mr-3" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                  {{ __('Sair') }}
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+              <a href="{{ route('carrinho') }}" class="icons-btn d-inline-block bag">
+                  <span class="icon-shopping-bag"></span>
+                  <span class="number">{{ $carrinho_conta }}</span>
+              </a>
+              @endguest
+
+
+            
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                 class="icon-menu"></span></a>
           </div>

@@ -59,7 +59,7 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li class="nav-item">
-            <a href="{{ route('home') }}" class="logout">Ver site</a>
+            <a href="{{ route('site.index') }}" class="logout">Ver site</a>
           </li>
           <li class="nav-item">
               <a href="" class="logout">Meu Perfil</a>

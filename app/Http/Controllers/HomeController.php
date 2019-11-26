@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,9 @@ class HomeController extends Controller
      */
     public function admin()
     {
+        if(Auth::user()->nivel == 3){
+            return redirect()->route('site.index');
+        }
         return view('home.index');
     }
 }
