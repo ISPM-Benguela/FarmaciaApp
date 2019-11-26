@@ -41,6 +41,8 @@
                         <a href="{{ route('produto.eliminar', $produto->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       </td>
                     </tr>
+                    @else
+                     <p>O stock está vazio</p>
                     @endforeach
                   </tbody>
                 </table>

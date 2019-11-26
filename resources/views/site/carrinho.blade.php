@@ -90,7 +90,7 @@
             <div class="col-md-6">
               <div class="row mb-5">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <a  href="{{ route('produto') }}" class="btn btn-primary btn-md btn-block">Actualizar carrinho</a>
+                  <a  href="" class="btn btn-primary btn-md btn-block">Actualizar carrinho</a>
                 </div>
                 <div class="col-md-6">
                   <a href="{{ route('loja') }}" class="btn btn-outline-primary btn-md btn-block">Terminar compra</a>

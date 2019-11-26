@@ -16,9 +16,13 @@ Route::get('/contactos', 'SiteController@contactos')->name('contactos');
 
 Route::get('/loja', 'SiteController@loja')->name('loja');
 
-Route::get('/loja/produto','SiteController@produto')->name('produto');
+Route::get('/loja/produto/{id}','SiteController@produto')->name('loja.visualizar');
+
+
 
 Route::get('/carrinho', 'SiteController@carrinho')->name('carrinho');
+
+Route::get('/carrinho/adicionar/{id}', 'CarrinhoController@carrinho')->name('carrinho.add');
 
 Auth::routes();
 
