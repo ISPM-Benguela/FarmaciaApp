@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use App\Carrinho;
+use Auth;
 
 class CarrinhoController extends Controller
 {
@@ -12,11 +14,20 @@ class CarrinhoController extends Controller
         $this->middleware('auth');
     }
 
-    public function carrinho($id){
-        try {
-           return Produto::findOrFail($id);
-        } catch(Excepion $e){
-            return "Nao achamos";
-        }
+    public function carrinho(Request $request, $id){
+      $quantidade =  $request->input('quantidade');
+      $produto = Produto::find($id);
+
+      if(Auth::user()){
+        $carrinho = Carrinho::create([
+            'user_id' => Auth::user()->id,
+            'produto_id' => $produto->id,
+            'quantidade' => $quantidade
+        ]);
+  
+        return redirect()->route('home')->with('success', 'Produto adicionaro ao carrinho');
+      }else {
+          return "Nao estas logado";
+      }
     }
 }
