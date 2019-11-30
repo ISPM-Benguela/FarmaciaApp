@@ -1,9 +1,16 @@
 @extends('layouts.app')
 
+@section('extra-css')
+<link href="{{ asset('css/balcao.css')}}" rel="stylesheet">
+@endsection
 
 @section('principal')
 <section class="wrapper">
+        
     <h3><i class="fa fa-angle-right"></i> Adetendimento ao cliente</h3>
+    <div class="alert alert-success success message-hide"   role="alert">
+      
+    </div>
     <div class="row">
       <div class="col-md-6">
         <form action="{{ route('balcao.vender') }}" method="POST">

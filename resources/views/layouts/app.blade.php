@@ -30,6 +30,7 @@
   <link href="{{ asset('css/main.css')}}" rel="stylesheet">
   <link href="{{ asset('css/gijgo.min.css')}}" rel="stylesheet">
 
+  @yield('extra-css')
   <!-- =======================================================
     Template Name: Dashio
     Template URL: https://templatemag.com/dashio-bootstrap-admin-template/

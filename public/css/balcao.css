@@ -1,0 +1,6 @@
+.message-hide {
+    display: none;
+}
+.message-show {
+    display: flex;
+}
