@@ -18,24 +18,32 @@ $(document).ready(function() {
     });
 
     /**Pesquisar produto */
-    $("#produto").typeahead({
-        source: function(query, process) {
-            return $.get(pathProduto, { query: query }, function(data) {
+    $("#produtos").keyup(function() {
+        let query = $(this).val();
+        let _token = $('input[name="_token"]').val();
+        console.log(_token);
+
+        $.ajax({
+            url: pathProduto,
+            method: "POST",
+            data: { query: query, _token: _token },
+            success: function(data) {
                 console.log(data);
-                return process(data);
-            });
-        }
+
+                $("#produtoList").fadeIn();
+                $("#produtoList").html(data);
+            }
+        });
+    });
+    $(".produto").click(function() {});
+
+    $("#produtoList").on("click", "li", function() {
+        $("#produtos").val($(this).text());
+        $("#produtoList").fadeOut();
     });
 
-    $("#test").typeahead({
-        source: function(query, process) {
-            return $.post(pathTest, { query: query }, function(data) {
-                console.log(data);
-                return process(data);
-            });
-        }
-    });
-    /* Pegar o preco do produto
+    // Pegar o preco do produto
+    /*
     $("#produto").on("change", function() {
         let produto = $("#produto").val();
         let total = 0;
@@ -49,7 +57,7 @@ $(document).ready(function() {
                 if (response.success) {
                     console.log(response);
 
-                    /*  let data = Array.from(response.success);
+                    let data = Array.from(response.success);
                     data.forEach(element => {
                         if (element.nome === produto) {
                             $('input[name="preco"]').val(element.preco + " Kz");
@@ -58,8 +66,8 @@ $(document).ready(function() {
                     });
                 }
             }
-        }); 
-    }); */
+        });
+    });*/
     $(document).on("click", "#btn-vender", function(e) {
         e.preventDefault();
         let produto = $('input[name="produto"]').val();

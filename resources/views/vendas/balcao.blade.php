@@ -21,13 +21,11 @@
                 <a href="#" data-toggle="modal" data-target="#clienteModal"><i class="fa fa-user-plus"></i></a>
             </div>
             <div class="form-group">
-                <label for="produto">Produto</label>
-                <input type="text" id="produto" name="produto" class="form-control" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="produto">Preço</label>
-                <input type="text" id="preco" name="preco" class="form-control" autocomplete="off">
-            </div>
+                <label for="produtos">Produto</label>
+                <input type="text" id="produtos" name="produtos" class="form-control" autocomplete="off">
+                <div id="produtoList" style="width: 100%;">
+                </div>
+              </div>
             <div class="form-group">
                 <label for="funcionario">Quantidade</label>
                 <input type="number" name="quantidade" id="quantidade" value="" class="form-control">
@@ -35,10 +33,6 @@
             <div class="form-group">
                 <label for="funcionario">Funcionario</label>
                 <input type="text" id="produto" value="{{ Auth::user()->name }}" class="form-control" disabled>
-            </div>
-            <div class="form-group">
-                <label for="funcionario">Test</label>
-                <input type="text" id="test" name="test" class="form-control" autocomplete="off">
             </div>
             <div class="form-group">
                 <button type="submit" id="btn-vender" class="btn btn-primary">adicionar carrinho</button>

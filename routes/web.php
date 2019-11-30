@@ -67,7 +67,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('pesquisa-cliente', 'VendaController@pesquisaCliente')->name('pesquisa.cliente');
 
-    Route::get('pesquisa-produto', 'VendaController@pesquisaProduto')->name('pesquisa.produto');
+    Route::post('pesquisa-produto', 'VendaController@pesquisaProduto')->name('pesquisa.produto');
 
     Route::post('pesquisa-teste', 'VendaController@pesquisaTeste');
 
