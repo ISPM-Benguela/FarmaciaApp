@@ -32,8 +32,8 @@
                       <td>
                         <a href="basic_table.html#">{{ $produto->id }}</a>
                       </td>
-                      <td class="hidden-phone">{{ $produto->name }}</td>
-                      <td>{{ $produto->price }} </td>
+                      <td class="hidden-phone">{{ $produto->nome }}</td>
+                      <td>{{ $produto->preco }} </td>
                       <td><span class="label label-info label-mini">{{ $produto->stock }}</span></td>
                       <td>{{ $produto->exp_data }}</td>
                       <td>

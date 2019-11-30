@@ -122,11 +122,21 @@
               </a>
             <ul class="sub">
               <li><a href="{{ route('venda.balcao') }}">Venda balcao</a></li>
-              <li><a href="grids.html">Vendas do dia</a></li>
-              <li><a href="calendar.html">Compras anteriores</a></li>
+              <li><a href="{{ route('venda.dia') }}">Vendas do dia</a></li>
+              <li><a href="{{ route('fechar.venda') }}">Fechar vendas</a></li>
             </ul>
           </li>
-        
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-bar-chart-o"></i>
+              <span>RELATORIOS</span>
+              </a>
+            <ul class="sub">
+              <li><a href="{{ route('departamento.index') }}"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
+              <li><a href="{{ route('funcionario.index') }}"><i class="fa fa-users"></i> Funcionarios</a></li>
+              <li><a href="{{ route('produto.index') }}"><i class="fa fa-cubes"></i> Produtos</a></li>
+            </ul>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>

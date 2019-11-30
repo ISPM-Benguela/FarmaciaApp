@@ -4,3 +4,7 @@
 .message-show {
     display: flex;
 }
+.btn-nd {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

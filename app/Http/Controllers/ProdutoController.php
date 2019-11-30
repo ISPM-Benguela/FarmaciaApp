@@ -40,30 +40,40 @@ class ProdutoController extends Controller
         
         $nomeFile = null;
         $upload = null;
+        $nome = $request->input('nome');
+        $marca = $request->input('marca');
+        $descricao = $request->input('descricao');
+        $preco = $request->input('preco');
+        $stock = $request->input('stock');
+        $exp_data = $request->input('exp_data');
+
 
         $this->validate($request, [
-            'name' => 'required|unique:produtos',
-            'description' => 'required',
-            'image' => 'required|image',
+            'nome' => 'required|unique:produtos',
+            'descricao' => 'required',
+            'imagem' => 'required|image',
             'exp_data' => 'required',
-            'price' => 'required',
-            'brand' => 'required',
+            'preco' => 'required',
+            'marca' => 'required',
             'stock' => 'required',
         ]);
        
-         $imagem = $request->file('image');
-         $upload =  $request->file('image')->getClientOriginalName();
+         $imagem = $request->file('imagem');
+         $upload =  $request->file('imagem')->getClientOriginalName();
          $file = $imagem->move('produtos', $upload);
          
-        $produto = Produto::create([
-            'name' => $request->input('name'),
-            'brand' => $request->input('brand'),
-            'description' => $request->input('description'),
-            'image' => $file,
-            'price' => $request->input('price'),
-            'stock' => $request->input('stock'),
-            'exp_data' => $request->input('exp_data')
-        ]);
+        $produto = new  Produto;
+        
+        $produto->nome = $nome;
+        $produto->marca = $marca;
+        $produto->descricao = $descricao;
+        $produto->imagem = $file;
+        $produto->preco = $preco;
+        $produto->stock = $stock;
+        $produto->exp_data = $exp_data;
+
+        $produto->save();
+     
 
         return redirect()->route('produto.index')->with('success','Produto cadastrado com sucesso');
     }
@@ -123,21 +133,21 @@ class ProdutoController extends Controller
             $file = $produto->image;
         }
         if(!$request->input('price')){
-            $price = $produto->price;
+            $price = $produto->preco;
         } else {
             $price = $request->input('price');
         }
 
         if(!$request->input('brand')){
-            $brand = $produto->brand;
+            $brand = $produto->marca;
         } else {
             $brand = $request->input('brand');
         }
        
-        $produto->name = $request->input('name');
-        $produto->image = $file;
-        $produto->price = $price;
-        $produto->brand = $brand;
+        $produto->nome = $request->input('name');
+        $produto->imagem = $file;
+        $produto->preco = $price;
+        $produto->marca = $brand;
         $produto->save();
 
         return redirect()->back();

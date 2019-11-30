@@ -61,10 +61,21 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('venda-balcao', 'VendaController@balcao')->name('venda.balcao');
 
-    Route::post('balcao', 'VendaController@vender')->name('balcao.vender');
-    Route::get('pesquisa-cliente', 'VendaController@pesquisacliente')->name('pesquisa.cliente');
+    Route::post('balcao-vender', 'VendaController@vender')->name('balcao.vender');
+    
+    Route::post('pesquisar-preco', 'VendaController@presquisarPreco')->name('presquisar.preco');
+
+    Route::get('pesquisa-cliente', 'VendaController@pesquisaCliente')->name('pesquisa.cliente');
+
+    Route::get('pesquisa-produto', 'VendaController@pesquisaProduto')->name('pesquisa.produto');
+
+    Route::post('pesquisa-teste', 'VendaController@pesquisaTeste');
 
     Route::post('cadastrar-cliente', 'ClienteController@store')->name('cadastrar.cliente');
+
+    Route::get('vendas-do-dia', 'VendaController@vendaDia')->name('venda.dia');
+    Route::get('fechar-venda', 'VendaController@fecharVenda')->name('fechar.venda');
+    Route::get('relatorio-venda', 'VendaController@fecharVenda')->name('relatorio.venda');
 
     /*
     Route::get('produto', 'ProdutoController@index')->name('produto.index');
