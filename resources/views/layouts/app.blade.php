@@ -29,6 +29,8 @@
   <script src="{{ asset('lib/chart-master/Chart.js')}}"></script>
   <link href="{{ asset('css/main.css')}}" rel="stylesheet">
   <link href="{{ asset('css/gijgo.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.css')}}">
+  
 
   @yield('extra-css')
   <!-- =======================================================
@@ -132,7 +134,7 @@
               <span>RELATORIOS</span>
               </a>
             <ul class="sub">
-              <li><a href="{{ route('departamento.index') }}"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
+              <li><a href="{{ route('relatorio.venda') }}"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
               <li><a href="{{ route('funcionario.index') }}"><i class="fa fa-users"></i> Funcionarios</a></li>
               <li><a href="{{ route('produto.index') }}"><i class="fa fa-cubes"></i> Produtos</a></li>
             </ul>
@@ -188,6 +190,8 @@
   <!--script for this page-->
   <script src="{{ asset('lib/sparkline-chart.js')}}"></script>
   <script src="{{ asset('lib/zabuto_calendar.js')}}"></script>
+  <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('js/table.js') }}"></script>
   @if (Session::has('success'))
   <script type="text/javascript">
     $(document).ready(function() {

@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('vendas-do-dia', 'VendaController@vendaDia')->name('venda.dia');
     Route::get('fechar-venda', 'VendaController@fecharVenda')->name('fechar.venda');
-    Route::get('relatorio-venda', 'VendaController@fecharVenda')->name('relatorio.venda');
+    Route::get('relatorio-venda', 'RelatorioController@relatorioVenda')->name('relatorio.venda');
 
     /*
     Route::get('produto', 'ProdutoController@index')->name('produto.index');
