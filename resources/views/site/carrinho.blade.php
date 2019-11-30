@@ -22,7 +22,6 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th class="product-thumbnail">Imagem</th>
                       <th class="product-name">Produto</th>
                       <th class="product-price">Preço</th>
                       <th class="product-quantity">Quantidade</th>
@@ -31,55 +30,27 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($meu_carrinho as $carrinho)
                     <tr>
-                      <td class="product-thumbnail">
-                        <img src="site/images/product_02.png" alt="Image" class="img-fluid">
-                      </td>
+                     
                       <td class="product-name">
-                        <h2 class="h5 text-black">Ibuprofen</h2>
+                        <h2 class="h5 text-black">{{ $carrinho->produto }}</h2>
                       </td>
-                      <td>Kz 55.00</td>
+                      <td>{{ $carrinho->produto }}</td>
                       <td>
                         <div class="input-group mb-3" style="max-width: 120px;">
-                          <div class="input-group-prepend">
-                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                          </div>
-                          <input type="text" class="form-control text-center" value="1" placeholder=""
+                          
+                          <input type="text" class="form-control text-center" value="{{ $carrinho->quantidade }}" placeholder=""
                             aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          <div class="input-group-append">
-                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                          </div>
+              
                         </div>
       
                       </td>
-                      <td>Kz 49.00</td>
+                      <td>{{ number_format(20, 2, '.', '') }}</td>
                       <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
                     </tr>
-      
-                    <tr>
-                      <td class="product-thumbnail">
-                        <img src="site/images/product_01.png" alt="Image" class="img-fluid">
-                      </td>
-                      <td class="product-name">
-                        <h2 class="h5 text-black">Bioderma</h2>
-                      </td>
-                      <td>Kz 49.00</td>
-                      <td>
-                        <div class="input-group mb-3" style="max-width: 120px;">
-                          <div class="input-group-prepend">
-                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                          </div>
-                          <input type="text" class="form-control text-center" value="1" placeholder=""
-                            aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          <div class="input-group-append">
-                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                          </div>
-                        </div>
-      
-                      </td>
-                      <td>Kz 49.00</td>
-                      <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                    </tr>
+                    @endforeach
+               
                   </tbody>
                 </table>
               </div>

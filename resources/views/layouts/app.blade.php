@@ -120,6 +120,7 @@
               <span>Vendas</span>
               </a>
             <ul class="sub">
+              <li><a href="{{ route('venda.balcao') }}">Venda balcao</a></li>
               <li><a href="grids.html">Vendas do dia</a></li>
               <li><a href="calendar.html">Compras anteriores</a></li>
             </ul>
@@ -163,6 +164,7 @@
   <script src="{{ asset('lib/jquery/jquery.min.js')}}"></script>
 
   <script src="{{ asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap3-typeahead.min.js')}}"></script>
   <script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js')}}"></script>
   <script src="{{ asset('lib/jquery.scrollTo.min.js')}}"></script>
   <script src="{{ asset('lib/jquery.nicescroll.js')}}" type="text/javascript"></script>
@@ -246,6 +248,8 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+
+  @yield('scripts')
 </body>
 
 </html>

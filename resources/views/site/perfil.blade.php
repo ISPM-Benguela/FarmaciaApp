@@ -8,9 +8,10 @@
                 <div class="card-body">
                     <img src="{{ asset('/img/perfil/default.jpg')}}" class="nd-img " alt="imagem de perfil">
                     <h6>Carregar imagem</h6>
-                    <form action="">
+                    <form action="{{ route('carregar.imagem') }}" method="POST">
+                        @csrf
                         <div class="group-form">
-                            <input type="file" class="form-control">
+                            <input type="file" name="image" class="form-control">
                         </div>
                         <div class="group-form">
                             <button type="submit" class="btn btn-default"> Carregar</button>

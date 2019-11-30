@@ -38,8 +38,11 @@ class SiteController extends Controller
         ]);
     }
     public function carrinho(){
+
+        $carrinho =  Carrinho::where('user_id', @Auth::user()->id)->get();
         return view('site.carrinho')->with([
-            'carrinho_conta' => Carrinho::where('user_id', @Auth::user()->id)->count()
+            'carrinho_conta' => Carrinho::where('user_id', @Auth::user()->id)->count(),
+            'meu_carrinho' => $carrinho
         ]);
     }
 }

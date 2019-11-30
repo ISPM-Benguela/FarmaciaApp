@@ -29,6 +29,8 @@ Route::get('meu-perfil', 'PerfilController@perfilCliente')->name('profile.client
 
 Route::post('meu-perfil/actualizar/', 'PerfilController@actualizar')->name('perfil.actualizar');
 
+Route::post('perfil/carrigar-image', 'PerfilController@carregar')->name('carregar.imagem');
+
 Route::get('/carrinho', 'SiteController@carrinho')->name('carrinho');
 
 Route::post('/carrinho/adicionar/{id}', 'CarrinhoController@carrinho')->name('carrinho.add');
@@ -55,6 +57,14 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('produto/{id}/update', 'ProdutoController@update')->name('produto.actulizar');
     Route::get('produto/{id}/destroy', 'ProdutoController@destroy')->name('produto.eliminar');
+
+
+    Route::get('venda-balcao', 'VendaController@balcao')->name('venda.balcao');
+
+    Route::post('balcao', 'VendaController@vender')->name('balcao.vender');
+    Route::get('pesquisa-cliente', 'VendaController@pesquisacliente')->name('pesquisa.cliente');
+
+    Route::post('cadastrar-cliente', 'ClienteController@store')->name('cadastrar.cliente');
 
     /*
     Route::get('produto', 'ProdutoController@index')->name('produto.index');

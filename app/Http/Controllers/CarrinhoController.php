@@ -21,7 +21,7 @@ class CarrinhoController extends Controller
       if(Auth::user()){
         $carrinho = Carrinho::create([
             'user_id' => Auth::user()->id,
-            'produto_id' => $produto->id,
+            'produto' => $produto->name,
             'quantidade' => $quantidade
         ]);
   

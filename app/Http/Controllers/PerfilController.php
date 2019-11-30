@@ -37,4 +37,16 @@ class PerfilController extends Controller
         $usuario->save();
         return redirect()->back();
     }
+    public function carregar(Request $request){
+        $file = "";
+        $imagem = $request->file('image');
+        return $imagem->getClientOriginalName();
+        
+        if(!Auth::user()->image){
+           
+        } else {
+
+        }
+        return "carregar image";
+    }
 }

@@ -8,15 +8,13 @@ class Carrinho extends Model
 {
     protected $fillable = [
         'user_id',
-        'produto_id',
+        'produto',
         'quantidade'
     ];
 
     public function user(){
         return $this->belongsTo('App\User');
     }
-    public function produtos(){
-        return $this->hasMany('App\Produto');
-    }
+   
 
 }
