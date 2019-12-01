@@ -48,7 +48,7 @@
       
                       </td>
                       <td>{{ number_format($carrinho->preco, 2, '.', '') }} Kz</td>
-                      <td><a href="#" class="btn btn-primary height-auto btn-sm"><i class="fa fa-trash"></i></a></td>
+                      <td><a href="{{ route('carrinho.eliminar', $carrinho->id) }}" class="btn btn-primary height-auto btn-sm"><i class="fa fa-trash"></i></a></td>
                       <td><a href="{{ route('carrinho.actualizar', $carrinho->id) }}" class="btn btn-primary height-auto btn-sm"><i class="fa fa-edit"></i></a></td>
                     </tr>
                     @endforeach
@@ -65,11 +65,9 @@
           <div class="row">
             <div class="col-md-6">
               <div class="row mb-5">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <a  href="" class="btn btn-primary btn-md btn-block">Actualizar carrinho</a>
-                </div>
+               
                 <div class="col-md-6">
-                  <a href="{{ route('loja') }}" class="btn btn-outline-primary btn-md btn-block">Terminar compra</a>
+                  <a href="{{ route('loja') }}" class="btn btn-outline-primary btn-md btn-block"><i class="fa fa-shopping-cart"></i> Terminar compra</a>
                 </div>
               </div>
             </div>

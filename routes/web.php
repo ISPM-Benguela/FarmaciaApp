@@ -39,6 +39,8 @@ Route::get('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizar')
 
 Route::post('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizarQuantidade')->name('tualizar.quantidade');
 
+Route::get('/carrinho/eliminar/{id}', 'CarrinhoController@carrinhoEliminar')->name('carrinho.eliminar');
+
 Auth::routes();
 
 

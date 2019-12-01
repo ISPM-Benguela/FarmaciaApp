@@ -68,4 +68,9 @@ class CarrinhoController extends Controller
        $carrinho->save();
        return redirect()->route('carrinho');
     }
+    public function carrinhoEliminar($id){
+      $carrinho =  Carrinho::find($id);
+      $carrinho->delete();
+      return redirect()->back();
+    }
 }
