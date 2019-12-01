@@ -16,9 +16,12 @@ class CreateItemsVendasTable extends Migration
         Schema::create('items_vendas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('produto_id')->unsigned();
             $table->string('produto');
             $table->decimal('preco', 10, 2);
             $table->integer('quantidade');
+            $table->integer('vendido')->default(0);
+            $table->integer('imprimir')->default(0);
             $table->timestamps();
         });
     }

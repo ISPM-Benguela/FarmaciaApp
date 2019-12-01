@@ -13,124 +13,100 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-          <form id="form-vender">
+          <form  action="{{ route('balcao.vender') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="cliente">Cliente</label>
-                <input type="text" id="cliente" name="cliente" class="form-control" autocomplete="off">
+                <input type="text" id="cliente"  value="{{ old('cliente')}}" name="cliente" class="form-control" autocomplete="off">
+                @if($errors->has('cliente'))
+                  <small id="emailHelp" class="invalid-feedback">{{ $errors->first('cliente') }}</small>
+                   <br />
+                @endif
+                
                 <a href="#" data-toggle="modal" data-target="#clienteModal"><i class="fa fa-user-plus"></i></a>
             </div>
             <div class="form-group">
                 <label for="produtos">Produto</label>
-                <input type="text" id="produtos" name="produtos" class="form-control" autocomplete="off">
+                <input type="text" id="produtos" name="produtos" value="{{ old('produtos')}}" class="form-control" autocomplete="off">
                 <div id="produtoList" style="width: 100%;">
                 </div>
+                @if($errors->has('produtos'))
+                  <small id="emailHelp" class="invalid-feedback">{{ $errors->first('produtos') }}</small>
+                  
+                @endif
               </div>
             <div class="form-group">
                 <label for="funcionario">Quantidade</label>
-                <input type="number" name="quantidade" id="quantidade" value="" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="funcionario">Funcionario</label>
-                <input type="text" id="produto" value="{{ Auth::user()->name }}" class="form-control" disabled>
-            </div>
+                <input type="number" value="{{ old('quantidade')}}" name="quantidade" id="quantidade" value="" class="form-control">
+                @if($errors->has('produtos'))
+                  <small id="emailHelp" class="invalid-feedback">{{ $errors->first('produtos') }}</small>
+                  
+                @endif
+              </div>
             <div class="form-group">
                 <button type="submit" id="btn-vender" class="btn btn-primary">adicionar carrinho</button>
             </div>
         </form>
       </div>
       <div class="col-md-6">
-          <div class="card">
-              <div class="card-body">
-                <div class="content-panel">
-                  <table class="table table-striped table-advance table-hover">
+              <div class="tabela">
+                    <table id="itemTable" class="table table-striped table-advance table-hover">
                     <h4><i class="fa fa-angle-right"></i> Item da compra</h4>
                     <hr>
                     <thead>
                       <tr>
-                        <th><i class="fa fa-bullhorn"></i> Company</th>
-                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                        <th><i class="fa fa-bookmark"></i> Profit</th>
-                        <th><i class=" fa fa-edit"></i> Status</th>
+                        <th><i class="fa fa-bullhorn"></i> Cliente</th>
+                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Produto</th>
+                        <th><i class="fa fa-bookmark"></i> Qtd</th>
+                        <th><i class=" fa fa-edit"></i> Preco</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($itemsVenda as $item)
+                          
+                     
                       <tr>
                         <td>
-                          <a href="basic_table.html#">Company Ltd</a>
+                          <a href="basic_table.html#">{{ $item->user['name'] }}</a>
                         </td>
-                        <td class="hidden-phone">Lorem Ipsum dolor</td>
-                        <td>12000.00$ </td>
-                        <td><span class="label label-info label-mini">Due</span></td>
+                        <td class="hidden-phone">{{ $item->produto }}</td>
+                        <td>{{ $item->quantidade }}</td>
+                        <td><span class="label label-info label-mini">{{ $item->preco }} Kz</span></td>
                         <td>
-                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                          <a href="{{ route('editar.item', $item->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                          <a href="{{ route('eliminar.item', $item->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          <a href="basic_table.html#">
-                            Dashio co
-                            </a>
-                        </td>
-                        <td class="hidden-phone">Lorem Ipsum dolor</td>
-                        <td>17900.00$ </td>
-                        <td><span class="label label-warning label-mini">Due</span></td>
-                        <td>
-                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="basic_table.html#">
-                            Another Co
-                            </a>
-                        </td>
-                        <td class="hidden-phone">Lorem Ipsum dolor</td>
-                        <td>14400.00$ </td>
-                        <td><span class="label label-success label-mini">Paid</span></td>
-                        <td>
-                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="basic_table.html#">Dashio ext</a>
-                        </td>
-                        <td class="hidden-phone">Lorem Ipsum dolor</td>
-                        <td>22000.50$ </td>
-                        <td><span class="label label-success label-mini">Paid</span></td>
-                        <td>
-                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="basic_table.html#">Total Ltd</a>
-                        </td>
-                        <td class="hidden-phone">Lorem Ipsum dolor</td>
-                        <td>12120.00$ </td>
-                        <td><span class="label label-warning label-mini">Due</span></td>
-                        <td>
-                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
-                  <a href="" class="btn btn-primary btn-nd">Finalizar compra</a>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <form action="{{ route('finalizar.venda') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                              <label for="">valor a pagar</label>
+                              <input type="text" name="valor" class="form-control">
+                            </div>
+                            <div class="form-group" >
+                                <input type="submit" class="btn btn-primary" value="Finalizar a venda">
+                                
+                            </div>
+                            <div class="form-group">
+                                <a href="{{ route('cancelar.venda') }}" class="btn btn-danger">Cancelar a venda</a>
+                            </div>
+                          </form>
+                          
+                      </div>
+                      <div class="clearfix"></div>
+                      
+                      <div class="col-md-6">
+                        <h3 class="pull-right">Total: {{ $total }} Kz</h3>
+                      </div>
+                    </div>
+                  
                 </div>
-                <!-- /content-panel -->
-              </div>
           </div>
       </div>
     </div>

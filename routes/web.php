@@ -73,6 +73,20 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('cadastrar-cliente', 'ClienteController@store')->name('cadastrar.cliente');
 
+    Route::get('eliminar-item/{id}', 'VendaController@eliminarItem')->name('eliminar.item');
+
+    Route::get('editar-item/{id}', 'VendaController@editarItem')->name('editar.item');
+
+    Route::post('actualizar-item', 'VendaController@itemActualizar')->name('item.actualizar');
+
+    Route::get('cancelar-venda', 'VendaController@cancelarVenda')->name('cancelar.venda');
+
+    Route::post('finalizar-venda', 'VendaController@finalizarVenda')->name('finalizar.venda');
+
+    Route::get('fatura-item', 'VendaController@faturaItem')->name('fatura.item');
+
+    Route::get('fechar-fatura', 'VendaController@imprimirFatura')->name('imprimir.fatura');
+
     Route::get('vendas-do-dia', 'VendaController@vendaDia')->name('venda.dia');
     Route::get('fechar-venda', 'VendaController@fecharVenda')->name('fechar.venda');
     Route::get('relatorio-venda', 'RelatorioController@relatorioVenda')->name('relatorio.venda');

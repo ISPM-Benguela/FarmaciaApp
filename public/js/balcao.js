@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var table = $("#itemTable").DataTable();
+
     var pathCliente = "http://127.0.0.1:8000/admin/pesquisa-cliente";
     var pathProduto = "http://127.0.0.1:8000/admin/pesquisa-produto";
     var pathTest = "http://127.0.0.1:8000/admin/pesquisa-teste";
@@ -67,14 +69,12 @@ $(document).ready(function() {
                 }
             }
         });
-    });*/
+    });
     $(document).on("click", "#btn-vender", function(e) {
         e.preventDefault();
-        let produto = $('input[name="produto"]').val();
+        let produto = $('input[name="produtos"]').val();
         let cliente = $('input[name="cliente"]').val();
         let quantidade = $('input[name="quantidade"]').val();
-
-        console.log(quantidade);
 
         $.ajax({
             type: "POST",
@@ -113,4 +113,28 @@ $(document).ready(function() {
             }
         });
     });
+
+    /** Item de venda 
+    $(document).on("click", "#btn-vender", function(e) {
+        e.preventDefault();
+
+        let produtos = $('input[name="produtos"]').val();
+        let cliente = $('input[name="cliente"]').val();
+        let quantidade = $('input[name="quantidade"]').val();
+
+        console.log(`${produtos} ${cliente} ${quantidade}`);
+
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:8000/admin/balcao-vender",
+            data: {
+                produtos: produtos,
+                cliente: cliente,
+                quantidade: quantidade
+            },
+            success: function(response) {
+                console.log(response.data.preco);
+            }
+        });
+    });*/
 });

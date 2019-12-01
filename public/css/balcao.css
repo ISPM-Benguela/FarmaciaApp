@@ -10,6 +10,9 @@
 }
 .tabela {
     padding: 14px;
+    background-color: #fff;
+    height: auto;
+    padding-bottom: 10px;
 }
 .produto {
     color: red !important;
