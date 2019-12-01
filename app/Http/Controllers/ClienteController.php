@@ -21,7 +21,7 @@ class ClienteController extends Controller
       
         $cliente = new User;
         $cliente->name = $input;
-        $cliente->email = $email;
+        $cliente->email = $email . "@gmail.com";
         $cliente->password = Hash::make($senha);
         $cliente->nivel = 3;
 

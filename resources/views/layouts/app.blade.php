@@ -124,8 +124,7 @@
               </a>
             <ul class="sub">
               <li><a href="{{ route('venda.balcao') }}">Venda balcao</a></li>
-              <li><a href="{{ route('venda.dia') }}">Vendas do dia</a></li>
-              <li><a href="{{ route('fechar.venda') }}">Fechar vendas</a></li>
+              <li><a href="{{ route('venda.dia') }}">Vendas online</a></li>
             </ul>
           </li>
           <li class="sub-menu">

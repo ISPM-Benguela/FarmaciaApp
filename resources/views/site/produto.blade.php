@@ -16,15 +16,15 @@
               <div class="row">
                 <div class="col-md-5 mr-auto">
                   <div class="border text-center">
-                    <img src="/{{ $produto->image }}" alt="{{ $produto->name }}" class="img-fluid p-5">
+                    <img src="/{{ $produto->imagem }}" alt="{{ $produto->nome }}" class="img-fluid p-5">
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <h2 class="text-black">{{ $produto->name }}</h2>
-                  <p>{{ $produto->description }}</p>
+                  <h2 class="text-black">{{ $produto->nome }}</h2>
+                  <p>{{ $produto->descricao }}</p>
                   
       
-                  <p><strong class="text-primary h4">{{ $produto->price }}  Kz</strong></p>
+                  <p><strong class="text-primary h4">{{ $produto->preco }}  Kz</strong></p>
       
                   
                   <form action="{{ route('carrinho.add', $produto->id) }}" method="POST">

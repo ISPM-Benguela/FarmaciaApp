@@ -12,7 +12,7 @@
             <h2 class="sub-title">Medicina Efectiva, Medicina do dia a dia</h2>
             <h1>Bem vindo a Farmacia</h1>
             <p>
-              <a href="" class="btn btn-primary px-5 py-3">Explorar nossa oferta</a>
+              <a href="{{ route('loja') }}" class="btn btn-primary px-5 py-3">Explorar nossa oferta</a>
             </p>
           </div>
         </div>
@@ -35,8 +35,8 @@
        
         <div class="col-sm-6 col-lg-4 text-center item mb-4">
          
-          <a href="{{ route('loja.visualizar', $produto->id) }}"> <img src="/{{ $produto->image }}" alt="{{ $produto->image }}"></a>
-          <h3 class="text-dark"><a href="{{ route('loja.visualizar', $produto->id) }}">{{ $produto->name }}</a></h3>
+          <a href="{{ route('loja.visualizar', $produto->id) }}"> <img src="/{{ $produto->imagem }}" alt="{{ $produto->imagem }}"></a>
+          <h3 class="text-dark"><a href="{{ route('loja.visualizar', $produto->id) }}">{{ $produto->nome }}</a></h3>
           <p class="price"><span>preço</span> &mdash; Kz 55.00</p>
         </div>
         @endforeach
