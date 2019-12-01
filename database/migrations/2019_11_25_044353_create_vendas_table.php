@@ -19,6 +19,7 @@ class CreateVendasTable extends Migration
             $table->integer('produto_id');
             $table->integer('quantidade');
             $table->decimal('valor', 10, 2);
+            $table->integer('terminou')->default(0);
             $table->timestamps();
         });
     }

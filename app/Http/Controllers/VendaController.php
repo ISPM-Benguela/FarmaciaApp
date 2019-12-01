@@ -14,7 +14,7 @@ class VendaController extends Controller
     public function balcao(){
         $total = 0;
 
-        foreach(ItemsVenda::all() as $item){
+        foreach(ItemsVenda::where('vendido', 0)->get() as $item){
            $total += $item->preco * $item->quantidade;
         }
         
@@ -31,8 +31,12 @@ class VendaController extends Controller
         $quantidade = $request->input('quantidade');
         
         $getProduto = Produto::where("nome", $produto)->first();
+        
         $getCliente = User::where("name", "=", $cliente)->first();
         // adcionar item devendas
+         if(strtolower($getProduto->stock) < $quantidade){
+             return redirect()->route('venda.balcao')->with('error', 'Nao pode vender assim');
+         }
 
         try {
             $itemVendas = ItemsVenda::create([
@@ -156,14 +160,25 @@ class VendaController extends Controller
             return redirect()->route('venda.balcao')->with('error',"O valor dado é inferior, o valor certo é $total Kz");
         }
         $troco = $valor - $total;
+
         foreach($items as $item){
 
+        // Cadastrar cada venda no banco de dados
            $venda = Venda::create([
                'user_id' => $item->user_id,
                'produto_id' => $item->produto_id,
                'quantidade' => $item->quantidade,
                'valor' => $valor
            ]);
+
+           // Terminar a venda
+           $venda->terminou = 1;
+           $venda->save();
+
+           // Subtrair o estoque pela quantidade comprada
+           $p = Produto::find($item->produto_id);
+           $p->stock -= $item->quantidade;
+           $p->save();
         }
         foreach(ItemsVenda::all() as $item){
             $item->vendido = 1;

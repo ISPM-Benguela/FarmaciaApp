@@ -19,7 +19,9 @@ class CarrinhoController extends Controller
       $produto = Produto::find($id);
       $check = Carrinho::all();
 
-
+      if($quantidade > $produto->stock){
+        return "A quantidade do stock e inferior";
+      }
 
       if( $quantidade > $produto->stock){
         return "A quantidade do produto no stock e inferior";

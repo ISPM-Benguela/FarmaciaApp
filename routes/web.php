@@ -31,15 +31,19 @@ Route::post('meu-perfil/actualizar/', 'PerfilController@actualizar')->name('perf
 
 Route::post('perfil/carrigar-image', 'PerfilController@carregar')->name('carregar.imagem');
 
-Route::get('/carrinho', 'SiteController@carrinho')->name('carrinho');
 
-Route::post('/carrinho/adicionar/{id}', 'CarrinhoController@carrinho')->name('carrinho.add');
 
-Route::get('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizar')->name('carrinho.actualizar');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/carrinho', 'SiteController@carrinho')->name('carrinho');
 
-Route::post('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizarQuantidade')->name('tualizar.quantidade');
-
-Route::get('/carrinho/eliminar/{id}', 'CarrinhoController@carrinhoEliminar')->name('carrinho.eliminar');
+    Route::post('/carrinho/adicionar/{id}', 'CarrinhoController@carrinho')->name('carrinho.add');
+    
+    Route::get('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizar')->name('carrinho.actualizar');
+    
+    Route::post('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizarQuantidade')->name('tualizar.quantidade');
+    
+    Route::get('/carrinho/eliminar/{id}', 'CarrinhoController@carrinhoEliminar')->name('carrinho.eliminar');
+});
 
 Auth::routes();
 

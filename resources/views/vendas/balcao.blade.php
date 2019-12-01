@@ -100,10 +100,11 @@
                           
                       </div>
                       <div class="clearfix"></div>
-                      
+                      @if($total > 0)
                       <div class="col-md-6">
                         <h3 class="pull-right">Total: {{ $total }} Kz</h3>
                       </div>
+                      @endif
                     </div>
                   
                 </div>
