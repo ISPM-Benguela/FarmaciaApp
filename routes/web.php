@@ -18,7 +18,6 @@ Route::get('/home', function(){
 });
 
 
-
 Route::get('/contactos', 'SiteController@contactos')->name('contactos');
 
 Route::get('/loja', 'SiteController@loja')->name('loja');
@@ -43,6 +42,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/carrinho/actualizar/{id}', 'CarrinhoController@carrinhoActualizarQuantidade')->name('tualizar.quantidade');
     
     Route::get('/carrinho/eliminar/{id}', 'CarrinhoController@carrinhoEliminar')->name('carrinho.eliminar');
+
+    Route::get('/carrinho/finalizar', 'CarrinhoController@carrinhoFinalizar')->name('carrinho.finanlizar');
+
+    Route::get('/carrinho/imprim', 'CarrinhoController@carrinhoFinalizar')->name('carrinho.finanlizar');
 });
 
 Auth::routes();
@@ -59,13 +62,17 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('departamento', 'DepartamentoController');
 
     Route::resource('funcionario', 'FuncionarioController');
+
     Route::post('funcionarios/{id}/update', 'FuncionarioController@update')->name('actualizar');
+
     Route::get('funcionarios/{id}/destroy', 'FuncionarioController@destroy')->name('destroy');
 
     Route::post('departamentos/{id}/update', 'DepartamentoController@update')->name('actualizar.departamento');
+
     Route::get('departamentos/{id}/destroy', 'DepartamentoController@destroy')->name('destroy');
 
     Route::post('produto/{id}/update', 'ProdutoController@update')->name('produto.actulizar');
+
     Route::get('produto/{id}/destroy', 'ProdutoController@destroy')->name('produto.eliminar');
 
 
@@ -98,7 +105,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('fechar-fatura', 'VendaController@imprimirFatura')->name('imprimir.fatura');
 
     Route::get('vendas-do-dia', 'VendaController@vendaDia')->name('venda.dia');
+
     Route::get('fechar-venda', 'VendaController@fecharVenda')->name('fechar.venda');
+
+    Route::get('fechar-carrinho', 'CarrinhoController@fecharCarrinho')->name('fechar.carrinho');
+
     Route::get('relatorio-venda', 'RelatorioController@relatorioVenda')->name('relatorio.venda');
 
     /*
@@ -111,8 +122,5 @@ Route::group(['middleware' => 'auth'], function(){
    
     Route::resource('produto', 'ProdutoController');
 
-   
-
-    
     });
 });

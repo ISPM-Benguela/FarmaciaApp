@@ -168,7 +168,6 @@ class VendaController extends Controller
                'user_id' => $item->user_id,
                'produto_id' => $item->produto_id,
                'quantidade' => $item->quantidade,
-               'valor' => $valor
            ]);
 
            // Terminar a venda

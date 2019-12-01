@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produto;
 use App\Carrinho;
 use Auth;
+use App\Venda;
 
 class CarrinhoController extends Controller
 {
@@ -36,7 +37,6 @@ class CarrinhoController extends Controller
       if(Auth::user()){
         $carrinho = Carrinho::create([
             'user_id' => Auth::user()->id,
-            'produto_id' => $produto->id,
             'produto' => $produto->nome,
             'preco' => $produto->preco,
             'quantidade' => $quantidade
@@ -72,7 +72,44 @@ class CarrinhoController extends Controller
     }
     public function carrinhoEliminar($id){
       $carrinho =  Carrinho::find($id);
+      $produto = Produto::where('nome', $carrinho->produto)->first();
+      $produto->stock += $carrinho->quantidade;
+      $produto->save();
+    
       $carrinho->delete();
       return redirect()->back();
+    }
+
+    public function carrinhoFinalizar(){
+
+      $p = Carrinho::where('user_id', Auth::user()->id)->first();
+      $carrinho = Carrinho::where('user_id', Auth::user()->id)->get();
+      $produto = Produto::where('nome', $p->produto)->first();
+      $total = 0;
+      foreach($carrinho as $item){
+        /*
+        $venda = Venda::create([
+          'user_id' => Auth::user()->id,
+          'produto_id' => $produto->id,
+          'quantidade' => $item->quantidade,
+        ]);*/
+        $total += ($item->preco * $item->quantidade);
+
+        //$item->delete();
+      }
+
+       return view('site.imprimir')->with([
+          'total' =>  $total,
+          'cliente' => Auth::user(),
+          'itemsVenda' => Carrinho::where('user_id', Auth::user()->id)->get()
+       ]);
+     
+    }
+    public function fecharCarrinho(){
+      foreach(Carrinho::where('user_id', Auth::user()->id)->get() as $item){
+        $item->delete();
+     }
+
+    return response()->json(['success' => true]);
     }
 }

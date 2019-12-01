@@ -55,9 +55,11 @@
                
                   </tbody>
                 </table>
+                @if($total > 0)
                 <div class="container">
                   <h3>Total a pagar: {{number_format( $total, 2, '.', '')  }} Kz</h3>
                 </div>
+                @endif
               </div>
             </form>
           </div>
@@ -65,10 +67,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="row mb-5">
-               
+                @if($total > 0)
                 <div class="col-md-6">
-                  <a href="{{ route('loja') }}" class="btn btn-outline-primary btn-md btn-block"><i class="fa fa-shopping-cart"></i> Terminar compra</a>
+                  <a href="{{ route('carrinho.finanlizar') }}" class="btn btn-outline-primary btn-md btn-block"><i class="fa fa-shopping-cart"></i> Terminar compra</a>
                 </div>
+                @endif
               </div>
             </div>
             
