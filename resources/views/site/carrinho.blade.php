@@ -27,6 +27,7 @@
                       <th class="product-quantity">Quantidade</th>
                       <th class="product-total">Total</th>
                       <th class="product-remove">Remover</th>
+                      <th class="product-remove">Actualizar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -40,19 +41,23 @@
                       <td>
                         <div class="input-group mb-3" style="max-width: 120px;">
                           
-                          <input type="text" class="form-control text-center" value="{{ $carrinho->quantidade }}" placeholder=""
-                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                          <input type="text" class="form-control text-center" value="{{ $carrinho->quantidade }}"
+                            aria-label="Example text with button addon" aria-describedby="button-addon1" disabled>
               
                         </div>
       
                       </td>
-                      <td>{{ number_format(20, 2, '.', '') }}</td>
-                      <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
+                      <td>{{ number_format($carrinho->preco, 2, '.', '') }} Kz</td>
+                      <td><a href="#" class="btn btn-primary height-auto btn-sm"><i class="fa fa-trash"></i></a></td>
+                      <td><a href="{{ route('carrinho.actualizar', $carrinho->id) }}" class="btn btn-primary height-auto btn-sm"><i class="fa fa-edit"></i></a></td>
                     </tr>
                     @endforeach
                
                   </tbody>
                 </table>
+                <div class="container">
+                  <h3>Total a pagar: {{number_format( $total, 2, '.', '')  }} Kz</h3>
+                </div>
               </div>
             </form>
           </div>

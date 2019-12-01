@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="{{asset('site/css/jquery-ui.css')}}">
   <link rel="stylesheet" href={{asset('"site/css/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{asset('site/css/owl.theme.default.min.css')}}">
-
+  <link href="{{ asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
 
   <link rel="stylesheet" href="{{asset('site/css/aos.css')}}">
 

@@ -48,4 +48,24 @@ class CarrinhoController extends Controller
           return "Nao estas logado";
       }
     }
+    public function carrinhoActualizar($id){
+      $carrinho = Carrinho::find($id);
+
+      return view('site.update')->with([
+        'produto' => Produto::where('nome', $carrinho->produto)->first(),
+        'carrinho' => Carrinho::find($id),
+        'carrinho_conta' => Carrinho::where('user_id', @Auth::user()->id)->count()
+    ]);
+    }
+    public function carrinhoActualizarQuantidade(Request $request, $id){
+       $carrinho = Carrinho::find($id);
+       $produto = Produto::where('nome', $carrinho->produto)->first();
+       $quantidade = $request->input('quantidade');
+       if($quantidade > $produto->stock){
+         return "A quantidade do stock e inferiro";
+       }
+       $carrinho->quantidade = $quantidade;
+       $carrinho->save();
+       return redirect()->route('carrinho');
+    }
 }

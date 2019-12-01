@@ -40,9 +40,15 @@ class SiteController extends Controller
     public function carrinho(){
 
         $carrinho =  Carrinho::where('user_id', @Auth::user()->id)->get();
+        $total = 0;
+        foreach($carrinho as $item){
+            $total += ($item->preco * $item->quantidade);
+        }
+
         return view('site.carrinho')->with([
             'carrinho_conta' => Carrinho::where('user_id', @Auth::user()->id)->count(),
-            'meu_carrinho' => $carrinho
+            'meu_carrinho' => $carrinho,
+            'total' => $total
         ]);
     }
 }
