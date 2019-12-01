@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="{{asset('site/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/site.css')}}">
+  <link rel="stylesheet" href="{{asset('css/jquery-confirm.min.css')}}">
 
 </head>
 
@@ -154,6 +155,8 @@
   <script src="{{asset('site/js/aos.js')}}"></script>
 
   <script src="{{asset('site/js/main.js')}}"></script>
+  <script src="{{asset('js/jquery-confirm.min.js')}}"></script>
+  @include('includes.messagesite')
 
 </body>
 

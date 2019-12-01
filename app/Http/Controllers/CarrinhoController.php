@@ -21,16 +21,16 @@ class CarrinhoController extends Controller
       $check = Carrinho::all();
 
       if($quantidade > $produto->stock){
-        return "A quantidade do stock e inferior";
+        return redirect()->route('site.index')->with('success', "A quantidade do stock e inferior");
       }
 
       if( $quantidade > $produto->stock){
-        return "A quantidade do produto no stock e inferior";
+         return redirect()->route('carrinho')->with('success', 'A quantidade inferior');
       }
 
       foreach($check as $item){
         if($item->produto == $produto->nome){
-          return "Este produto ja esta no carrinho";
+          return redirect()->route('site.index')->with('success', 'Produto ja esta no carrinho');
         }
       }
 
@@ -64,7 +64,7 @@ class CarrinhoController extends Controller
        $produto = Produto::where('nome', $carrinho->produto)->first();
        $quantidade = $request->input('quantidade');
        if($quantidade > $produto->stock){
-         return "A quantidade do stock e inferiro";
+         return redirect()->route('carrinho')->with('success', 'Testando');
        }
        $carrinho->quantidade = $quantidade;
        $carrinho->save();
