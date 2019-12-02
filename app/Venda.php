@@ -12,7 +12,9 @@ class Venda extends Model
         'quantidade',
         'valor'
     ];
-
+     public function user(){
+         return $this->belongsTo("App\User");
+     }
     public function produto(){
         return $this->belongsTo("App\Produto");
     }

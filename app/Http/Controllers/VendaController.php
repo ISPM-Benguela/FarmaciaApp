@@ -105,8 +105,16 @@ class VendaController extends Controller
         return response()->json($getProduto);
     }
 
-    public function vendaDia(){
-        return view('vendas.vendadia');
+    public function vendas(){
+        $vendas = Venda::all();
+        $total = 0;
+
+        foreach($vendas as $item){
+            $total += $item->preco;
+        }
+        return view('vendas.vendadia')->with([
+            'vendas' => $vendas
+        ]);
     }
     public function fecharVenda(){
         return view('vendas.fecharvenda');
@@ -218,5 +226,25 @@ class VendaController extends Controller
          }
 
         return response()->json(['success' => true]);
+    }
+    public function eliminarVenda($id){
+        $venda = Venda::find($id);
+        $venda->delete();
+        return redirect()->route('venda.dia')->with('success', 'Venda eliminado');
+    }
+    public function visualizarVenda($id){
+       
+        $venda = Venda::where('user_id', $id)->get();
+        $cliente = User::find($id);
+        
+        $total = 0;
+        foreach($venda as $item){
+            $total += ($item->produto['preco'] * $item->quantidade);
+        }
+        return view('vendas.visualizar')->with([
+            'vendas' => $venda,
+            'total' => $total,
+            'cliente' => $cliente
+        ]);
     }
 }

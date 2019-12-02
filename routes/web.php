@@ -104,13 +104,23 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('fechar-fatura', 'VendaController@imprimirFatura')->name('imprimir.fatura');
 
-    Route::get('vendas-do-dia', 'VendaController@vendaDia')->name('venda.dia');
-
+    Route::get('vendas', 'VendaController@vendas')->name('venda.dia');
+    
     Route::get('fechar-venda', 'VendaController@fecharVenda')->name('fechar.venda');
+
+    Route::get('fechar-online/{id}', 'VendaOnlineController@fecharVenda')->name('fechar.venda');
 
     Route::get('fechar-carrinho', 'CarrinhoController@fecharCarrinho')->name('fechar.carrinho');
 
     Route::get('relatorio-venda', 'RelatorioController@relatorioVenda')->name('relatorio.venda');
+
+    Route::get('vendas-online', 'VendaOnlineController@index')->name('vendas.online');
+
+    Route::get('eliminar-venda/{id}', 'VendaController@eliminarVenda')->name('eliminar.venda');
+
+    Route::get('visualizar-venda/{id}', 'VendaController@visualizarVenda')->name('visualizar.venda');
+
+    Route::post('terminar-venda-online/{id}', 'VendaOnlineController@teminarVenda')->name('terminar.online');
 
     /*
     Route::get('produto', 'ProdutoController@index')->name('produto.index');

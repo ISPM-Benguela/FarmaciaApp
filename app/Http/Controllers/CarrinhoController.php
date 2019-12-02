@@ -87,12 +87,12 @@ class CarrinhoController extends Controller
       $produto = Produto::where('nome', $p->produto)->first();
       $total = 0;
       foreach($carrinho as $item){
-        /*
+        
         $venda = Venda::create([
           'user_id' => Auth::user()->id,
           'produto_id' => $produto->id,
           'quantidade' => $item->quantidade,
-        ]);*/
+        ]);
         $total += ($item->preco * $item->quantidade);
 
         //$item->delete();

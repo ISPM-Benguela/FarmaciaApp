@@ -124,18 +124,8 @@
               </a>
             <ul class="sub">
               <li><a href="{{ route('venda.balcao') }}">Venda balcao</a></li>
-              <li><a href="{{ route('venda.dia') }}">Vendas online</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-bar-chart-o"></i>
-              <span>RELATORIOS</span>
-              </a>
-            <ul class="sub">
-              <li><a href="{{ route('relatorio.venda') }}"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
-              <li><a href="{{ route('funcionario.index') }}"><i class="fa fa-users"></i> Funcionarios</a></li>
-              <li><a href="{{ route('produto.index') }}"><i class="fa fa-cubes"></i> Produtos</a></li>
+              <li><a href="{{ route('venda.dia') }}">Lista de Vendas</a></li>
+              <li><a href="{{ route('vendas.online') }}">Vendas online</a></li>
             </ul>
           </li>
         </ul>
@@ -222,6 +212,9 @@
   </script>
   <script type="application/javascript">
     $(document).ready(function() {
+
+      $("#table_vendas").DataTable();
+
       $("#date-popover").popover({
         html: true,
         trigger: "manual"
