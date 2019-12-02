@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('extra-css')
- <style>
-   body {
-     color: red;
-   }
- </style>   
+  
 @endsection
 @section('principal')
     <h3>Departamentos</h3>

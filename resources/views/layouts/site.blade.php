@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Pharma &mdash; Colorlib Template</title>
+  <title>Farmacia</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -77,10 +77,12 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
+              @if(Auth::user()->nivel == 3)
               <a href="{{ route('carrinho') }}" class="icons-btn d-inline-block bag">
                   <span class="icon-shopping-bag"></span>
                   <span class="number">{{ $carrinho_conta }}</span>
               </a>
+              @endif
               @endguest
 
 

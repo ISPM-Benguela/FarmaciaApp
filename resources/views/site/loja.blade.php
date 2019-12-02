@@ -12,83 +12,24 @@
       <div class="site-section">
         <div class="container">
           
-                <div class="row">
-                        <div class="title-section  text-center col-12">
-                          <h2 class="text-uppercase">Produtos Disponiveis</h2>
-                        </div>
-                      </div>
+            <div class="row">
+            <div class="title-section  text-center col-12">
+              <h2 class="text-uppercase">Produtos Disponiveis</h2>
+            </div>
+          </div>
       
           <div class="row">
-
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <span class="tag">Promoção</span>
-              <a href="shop-single.html"> <img src="site/images/product_01.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Bioderma</a></h3>
-              <p class="price"><del>95.00</del> &mdash; Kz 55.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href="shop-single.html"> <img src="site/images/product_02.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
-              <p class="price">Kz 70.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href="shop-single.html"> <img src="site/images/product_03.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-              <p class="price">Kz 120.00</p>
-            </div>
-      
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-      
-              <a href="shop-single.html"> <img src="site/images/product_04.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="site/shop-single.html">Cetyl Pure</a></h3>
-              <p class="price"><del>45.00</del> &mdash; Kz 20.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href="shop-single.html"> <img src="site/images/product_05.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
-              <p class="price">Kz 38.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <span class="tag">Promoção</span>
-              <a href="shop-single.html"> <img src="site/images/product_06.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
-              <p class="price"><del>Kz 89</del> &mdash; Kz 38.00</p>
-            </div>
-  
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <span class="tag">Promoção</span>
-              <a href="shop-single.html"> <img src="site/images/product_01.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Bioderma</a></h3>
-              <p class="price"><del>95.00</del> &mdash; Kz 55.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href="shop-single.html"> <img src="site/images/product_02.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
-              <p class="price">Kz 70.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href="shop-single.html"> <img ˀsrc="site/images/product_03.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-              <p class="price">Kz 120.00</p>
-            </div>
-            
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            
-              <a href="shop-single.html"> <img src="site/images/product_04.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
-              <p class="price"><del>45.00</del> &mdash; Kz 20.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href="shop-single.html"> <img src="site/images/product_05.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
-              <p class="price">Kz 38.00</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <span class="tag">Promoção</span>
-              <a href="shop-single.html"> <img src="site/images/product_06.png" alt="Image"></a>
-              <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
-              <p class="price"><del>Kz 89</del> &mdash; Kz 38.00</p>
-            </div>
+              @foreach ($produtos as $item)
+               
+         
+              <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                  
+                  <a href="{{ route('loja.visualizar', $item->id) }}"> <img src="/{{ $item->imagem }}" alt="{{ $item->imagem }}"></a>
+                  <h3 class="text-dark"><a href="">{{ $item->nome }}</a></h3>
+                  <p class="price">{{ $item->preco }} Kz</p>
+              </div>
+              @endforeach 
+           
           </div>
           <div class="row mt-5">
             <div class="col-md-12 text-center">

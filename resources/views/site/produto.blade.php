@@ -42,7 +42,9 @@
                     </div>
           
                   </div>
+                  @if(Auth::user()->nivel == 3)
                   <input type="submit" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" value="Adicionar no carrinho">
+                  @endif
                 </form>
                 </div>
               </div>

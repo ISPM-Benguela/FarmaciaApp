@@ -62,54 +62,21 @@
           </div>
   
           <div class="row">
+
+           @foreach ($destacados as $item)
+               
+         
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <span class="tag">Promoção</span>
-              <a href=""> <img src="{{asset('site/images/product_01.png')}}" alt="Image"></a>
-              <h3 class="text-dark"><a href="">Bioderma</a></h3>
-              <p class="price"><del>95.00</del> &mdash; Kz 55.00</p>
+              
+              <a href="{{ route('loja.visualizar', $item->id) }}"> <img src="/{{ $item->imagem }}" alt="{{ $item->imagem }}"></a>
+              <h3 class="text-dark"><a href="">{{ $item->nome }}</a></h3>
+              <p class="price">{{ $item->preco }} Kz</p>
           </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href=""> <img src="{{asset('site/images/product_02.png')}}" alt="Image"></a>
-              <h3 class="text-dark"><a href="">Chanca Piedra</a></h3>
-              <p class="price">Kz 70.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href=""> <img src="{{asset('site/images/product_03.png')}}" alt="Image"></a>
-              <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
-              <p class="price">Kz 120.00</p>
-          </div>
-  
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-  
-              <a href=""> <img src="{{asset('site/images/product_04.png')}}" alt="Image"></a>
-              <h3 class="text-dark"><a href="">Cetyl Pure</a></h3>
-              <p class="price"><del>45.00</del> &mdash; Kz 20.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <a href=""> <img src="{{asset('site/images/product_05.png')}}" alt="Image"></a>
-              <h3 class="text-dark"><a href="">CLA Core</a></h3>
-              <p class="price">Kz 38.00</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-              <span class="tag">Promoção</span>
-              <a href=""> <img src="{{asset('site/images/product_06.png')}}" alt="Image"></a>
-              <h3 class="text-dark"><a href="">Poo Pourri</a></h3>
-              <p class="price"><del>Kz 89</del> &mdash; Kz 38.00</p>
-          </div>
+          @endforeach 
           </div>
           <div class="row mt-5">
             <div class="col-md-12 text-center">
-                <div class="site-block-27">
-                <ul>
-                    <li><a href="">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">&gt;</a></li>
-                </ul>
-                </div>
+                    {{ $destacados->links() }}
             </div>
         </div>
       </div>
