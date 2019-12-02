@@ -13,9 +13,6 @@
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- Favicons -->
-  <link href="{{ asset('img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -52,7 +49,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="/" class="logo"><b>FARM<span>BOA</span></b></a>
+      <a href="/" class="logo"><b>FARM<span>ACIA</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -114,7 +111,9 @@
             <ul class="sub">
               <li><a href="{{ route('departamento.index') }}"><i class="fa fa-users"></i> Departamento</a></li>
               <li><a href="{{ route('funcionario.index') }}"><i class="fa fa-users"></i> Funcionarios</a></li>
+              @if(Auth::user()->nivel == 1)
               <li><a href="{{ route('produto.index') }}"><i class="fa fa-cubes"></i> Produtos</a></li>
+              @endif
             </ul>
           </li>
           <li class="sub-menu">

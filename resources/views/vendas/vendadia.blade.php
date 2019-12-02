@@ -12,7 +12,7 @@
               <th><i class="fa fa-bullhorn"></i> Cliente</th>
               <th class="hidden-phone"><i class="fa fa-question-circle"></i> Produto</th>
               <th><i class="fa fa-bookmark"></i> Preço</th>
-              <th><i class=" fa fa-edit"></i> Quantidade</th>
+              <th><i class=" fa fa-edit"></i> Quantidades</th>
               <th></th>
             </tr>
           </thead>
@@ -25,9 +25,11 @@
               </td>
               <td class="hidden-phone">{{ $item->produto['nome'] }}</td>
               <td>{{ $item->produto['preco'] }} Kz</td>
-              <td><span class="label label-info label-mini">{{ $item->produto['stock'] }}</span></td>
+              <td><span class="label label-info label-mini">{{ $item->quantidade }}</span></td>
               <td>
+                  @if(Auth::user()->nivel == 1)
                 <a href="{{ route('eliminar.venda', $item->id ) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                @endif
               </td>
             </tr>
             @endforeach

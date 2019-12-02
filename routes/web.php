@@ -59,13 +59,15 @@ Route::group(['middleware' => 'auth'], function(){
     
     Route::get('meu-perfil', 'PerfilController@index')->name('perfil.dashboard');
 
+   //Route::get('departamento/{id}/destroy', 'DepartamentoController@destroy')->name('destroy.departamento');
+
     Route::resource('departamento', 'DepartamentoController');
 
     Route::resource('funcionario', 'FuncionarioController');
 
     Route::post('funcionarios/{id}/update', 'FuncionarioController@update')->name('actualizar');
 
-    Route::get('funcionarios/{id}/destroy', 'FuncionarioController@destroy')->name('destroy');
+    Route::get('funcionarios/{id}/destroy', 'FuncionarioController@destroy')->name('funcionario.destroy');
 
     Route::post('departamentos/{id}/update', 'DepartamentoController@update')->name('actualizar.departamento');
 

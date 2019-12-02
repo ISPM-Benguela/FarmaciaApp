@@ -2,10 +2,11 @@
 
 @section('principal')
     <h3><i class="fa fa-users"></i> Funcionarios</h3>
+    @if(Auth::user()->nivel == 1)
     <a href="{{ route('funcionario.create') }}"  class="btn btn-default">
         <i class="fa fa-user-plus"></i> Criar funcionario
     </a>
-          
+     @endif     
         
     <hr>
 
@@ -35,8 +36,10 @@
                       <td>{{ $funcionario->email }} </td>
                       <td><span class="label label-info label-mini">{{ $funcionario->departamento['departamento'] }}</span></td>
                       <td>
+                        @if(Auth::user()->nivel == 1)
                         <a href="{{ route('funcionario.edit', $funcionario->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a href="{{ route('destroy', $funcionario->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                        <a href="{{ route('funcionario.destroy', $funcionario->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                        @endif
                       </td>
                     </tr>
                     @endforeach

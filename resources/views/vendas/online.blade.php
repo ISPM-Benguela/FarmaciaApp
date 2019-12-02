@@ -28,7 +28,9 @@
               <td><span class="label label-info label-mini">{{ $item->produto['stock'] }}</span></td>
               <td>
                 <a href="{{ route('visualizar.venda', $item->user_id) }}" class="btn btn-success btn-xs">visualizar <i class="fa fa-eye"></i></a>
+                @if(Auth::user()->nivel == 1)
                 <a href="{{ route('eliminar.venda', $item->id ) }}" class="btn btn-danger btn-xs">eliminar <i class="fa fa-trash-o"></i></a>
+                @endif
               </td>
             </tr>
             @endforeach

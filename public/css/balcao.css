@@ -17,3 +17,7 @@
 .produto {
     color: red !important;
 }
+.btn-cancelar {
+    margin-top: 10px;
+    margin-left: 39px;
+}

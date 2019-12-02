@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
+@section('extra-css')
+ <style>
+   body {
+     color: red;
+   }
+ </style>   
+@endsection
 @section('principal')
     <h3>Departamentos</h3>
+    @if(Auth::user()->nivel == 1)
     <a href="{{ route('departamento.create') }}" class="btn btn-default"><i class="fa fa-plus"></i> Criar departamento</a>
-
+     @endif
     <hr>
 
     <div class="row mb">
@@ -30,8 +38,10 @@
                       <td class="hidden-phone">{{ $departamento->departamento }}</td>
                       
                       <td>
+                          @if(Auth::user()->nivel == 1)
                         <a href="{{ route('departamento.edit', $departamento->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a href="{{ route('destroy', $departamento->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                        @endif
                       </td>
                     </tr>
                     @endforeach

@@ -11,14 +11,14 @@
             @csrf
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
               <label for="exampleInputEmail1">Nome</label>
-              <input type="text" name="name" class="form-control"  placeholder="Nome">
+              <input type="text" name="name" value="{{ old('name') }}" class="form-control"  placeholder="Nome">
               @if($errors->has('name'))
               <small id="emailHelp" class="invalid-feedback">{{ $errors->first('name') }}</small>
               @endif  
             </div>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label for="exampleInputEmail1">Email</label>
-                <input type="email" name="email" class="form-control"  placeholder="Email">
+                <input type="email" name="email" value="{{ old('email') }}" class="form-control"  placeholder="Email">
                 @if($errors->has('email'))
                     <small id="emailHelp" class="invalid-feedback">{{ $errors->first('email') }}</small>
                 @endif 
@@ -42,11 +42,7 @@
                     <small id="emailHelp" class="invalid-feedback">{{ $errors->first('password') }}</small>
                 @endif
             </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
 
  </div>

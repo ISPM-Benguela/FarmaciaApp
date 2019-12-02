@@ -87,25 +87,25 @@
                             @csrf
                             <div class="form-group">
                               <label for="">valor a pagar</label>
-                              <input type="text" name="valor" class="form-control">
+                              <input type="text" name="valor" class="form-control" autocomplete="off">
                             </div>
                             <div class="form-group" >
                                 <input type="submit" class="btn btn-primary" value="Finalizar a venda">
                                 
                             </div>
                             <div class="form-group">
-                                <a href="{{ route('cancelar.venda') }}" class="btn btn-danger">Cancelar a venda</a>
+                                
                             </div>
                           </form>
                           
                       </div>
-                      <div class="clearfix"></div>
-                      @if($total > 0)
                       <div class="col-md-6">
-                        <h3 class="pull-right">Total: {{ $total }} Kz</h3>
+                          @if($total > 0)
+                            <h3 class="pull-right">Total: {{ $total }} Kz</h3>
+                            <a href="{{ route('cancelar.venda') }}" class="btn btn-danger btn-cancelar pull-right">Cancelar a venda</a>
+                          @endif
+                        </div>
                       </div>
-                      @endif
-                    </div>
                   
                 </div>
           </div>

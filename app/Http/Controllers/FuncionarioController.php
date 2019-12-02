@@ -56,7 +56,7 @@ class FuncionarioController extends Controller
         $user = new User;
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('email'));
+        $user->password = Hash::make($request->input('password'));
         $user->departamento_id = $request->input('departamento_id');
         $user->nivel = 2;
 
