@@ -63,9 +63,9 @@
                     @enderror
                     <br />
                     <label class="checkbox">
-                        <input type="checkbox" value="remember-me"> Remember me
+                        <input type="checkbox" value="remember-me"> Me lembrar
                         <span class="pull-right">
-                        <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+                        <a data-toggle="modal" href="login.html#myModal"> Esqueceu a senha?</a>
                         </span>
                     </label>
                     <br />
@@ -74,15 +74,11 @@
                         {{ __('Entrar') }}
                     </button>
 
-                    <div class="login-social-link centered">
-                        <p>or you can sign in via your social network</p>
-                        <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                        <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-                    </div>
+                    
                 <div class="registration">
-                Don't have an account yet?<br/>
-                <a class="" href="#">
-                    Create an account
+                Ainda não tem conta?<br/>
+                <a class="" href="{{ route("register") }}">
+                    Criar tua conta
                     </a>
                 </div>
             </div>

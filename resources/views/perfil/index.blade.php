@@ -8,26 +8,49 @@
             <div class="col-md-4 profile-text mt mb centered">
               <form action="">
                   <div class="form-group">
+                      <label for="Nome" class="pull-left">Nome</label>
                       <input type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label for="Email" class="pull-left">Email</label>
+                      <input type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label for="Email" class="pull-left">Senha</label>
+                      <input type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Actualizar" class="btn btn-theme pull-left">
                   </div>
               </form>
             </div>
             <!-- /col-md-4 -->
             <div class="col-md-4 profile-text">
               <h3>{{ Auth::user()->name }}</h3>
-              <h6>Main Administrator</h6>
-              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+              @if(Auth::user()->nivel == 1)
+              <h6> Administrador</h6>
+              @endif
+              @if(Auth::user()->nivel == 2)
+              <h6> Funcionario</h6>
+              @endif
+             
               <br>
-              <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Send Message</button></p>
+              <form action="">
+                <div class="form-group">
+                  <label for="">Carregar imagem</label>
+                  <input type="file" name="" class="form-control" id="">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-theme"><i class="fa fa-upload"></i> Carregar</button>
+                </div>
+              </form>
+            
             </div>
             <!-- /col-md-4 -->
             <div class="col-md-4 centered">
               <div class="profile-pic">
-                <p><img src="img/ui-sam.jpg" class="img-circle"></p>
-                <p>
-                  <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
-                  <button class="btn btn-theme02">Add</button>
-                </p>
+                <p><img src="{{ asset('img/perfil/default.jpg')}}" class="img-circle" width="80"></p>
+                
               </div>
             </div>
             <!-- /col-md-4 -->

@@ -44,6 +44,11 @@ $(document).ready(function() {
         $("#produtoList").fadeOut();
     });
 
+    $("#cliente").on("change", function() {
+        let cliente = $("#cliente").val();
+        $("#user").val(cliente);
+    });
+
     // Pegar o preco do produto
     /*
     $("#produto").on("change", function() {

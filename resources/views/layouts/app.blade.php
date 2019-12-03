@@ -62,7 +62,7 @@
             <a href="{{ route('site.index') }}" class="logout">Ver site</a>
           </li>
           <li class="nav-item">
-              <a href="" class="logout">Meu Perfil</a>
+              <a href="http://127.0.0.1:8000/admin/meu-perfil" class="logout">Meu Perfil</a>
             </li>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="logout dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

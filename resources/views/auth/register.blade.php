@@ -80,17 +80,13 @@
                         {{ __('Entrar') }}
                     </button>
 
-                    <div class="login-social-link centered">
-                        <p>or you can sign in via your social network</p>
-                        <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                        <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+                    
+                    <div class="registration">
+                    Já tem conta?<br/>
+                    <a class="" href="{{ route("login") }}">
+                        fazer login
+                        </a>
                     </div>
-                <div class="registration">
-                Don't have an account yet?<br/>
-                <a class="" href="#">
-                    Create an account
-                    </a>
-                </div>
             </div>
           
                    

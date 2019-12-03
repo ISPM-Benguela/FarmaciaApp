@@ -45,7 +45,7 @@
       </div>
       <div class="row mt-5">
         <div class="col-12 text-center">
-          <a href="" class="btn btn-primary px-4 py-3">Ver mais</a>
+          <a href="{{ route("loja") }}" class="btn btn-primary px-4 py-3">Ver mais</a>
         </div>
       </div>
     </div>
