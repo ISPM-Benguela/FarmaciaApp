@@ -80,11 +80,9 @@
                     </div>
                     <div>
                       <!-- /col-md-3 -->
-                      <div class="pull-left"> DATA : </div>
+                      <div class="pull-left"> IBAN : </div>
                       <div class="pull-right"> 
-                          <script>
-                              new Date()
-                          </script>
+                          <p>14585634410</p>
                       </div>
                       <div class="clearfix"></div>
                     </div>

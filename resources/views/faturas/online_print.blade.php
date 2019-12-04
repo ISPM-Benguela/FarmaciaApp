@@ -76,8 +76,6 @@
                     
                     <div>
                       <!-- /col-md-3 -->
-                      <div class="pull-left"> DATA : </div>
-                      <div class="pull-right"> {{ $cliente->created_at }} </div>
                       <div class="clearfix"></div>
                     </div>
                     <!-- /row -->

@@ -60,15 +60,20 @@ class CarrinhoController extends Controller
     ]);
     }
     public function carrinhoActualizarQuantidade(Request $request, $id){
-       $carrinho = Carrinho::find($id);
-       $produto = Produto::where('nome', $carrinho->produto)->first();
+      $produto = Produto::where('id', $id)->first();
+      
+       $carrinho = Carrinho::where('produto', $produto->nome)->first();
+      
        $quantidade = $request->input('quantidade');
        if($quantidade > $produto->stock){
          return redirect()->route('carrinho')->with('success', 'Testando');
        }
+       if($quantidade == $carrinho->quantidade){
+         return redirect()->back()->with('success', 'Não actualizaste o carrinho.');
+       }
        $carrinho->quantidade = $quantidade;
        $carrinho->save();
-       return redirect()->route('carrinho');
+       return redirect()->route('carrinho')->with('success', 'Carrinho actualizado com sucesso.');
     }
     public function carrinhoEliminar($id){
       $carrinho =  Carrinho::find($id);
@@ -77,7 +82,7 @@ class CarrinhoController extends Controller
       $produto->save();
     
       $carrinho->delete();
-      return redirect()->back();
+      return redirect()->route('carrinho')->with('success', 'Produto eliminado do carrinho.');
     }
 
     public function carrinhoFinalizar(){
