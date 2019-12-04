@@ -6,14 +6,17 @@
         <div class="col-md-4">
             <div class="card mt-3">
                 <div class="card-body">
-                    <img src="{{ asset('/img/perfil/default.jpg')}}" class="nd-img " alt="imagem de perfil">
+                    <img src="/{{  $perfil->imagem }}" class="nd-img " alt="imagem de perfil">
                     <h6>Carregar imagem</h6>
-                    <form action="{{ route('carregar.imagem') }}" method="POST">
+                    <form action="{{ route('carregar.imagem') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="group-form">
-                            <input type="file" name="image" class="form-control">
+                        <div class="form-group{{ $errors->has('imagem') ? 'has-errror' : '' }}">
+                            <input type="file" name="imagem" class="form-control">
+                            @if($errors->has('imagem'))
+                            <small id="emailHelp" class="invalid-feedback">{{ $errors->first('imagem') }}</small>
+                            @endif
                         </div>
-                        <div class="group-form">
+                        <div class="form-group">
                             <button type="submit" class="btn btn-default"> Carregar</button>
                         </div>
                     </form>

@@ -7,6 +7,7 @@ use App\Carrinho;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use App\Perfil;
 
 class PerfilController extends Controller
 {
@@ -18,7 +19,8 @@ class PerfilController extends Controller
 
         return view('site.perfil')->with([
             'carrinho_conta' => Carrinho::where('user_id', @Auth::user()->id)->count(),
-            'usuario' => User::find(Auth::user()->id)
+            'usuario' => User::find(Auth::user()->id),
+            'perfil' => Perfil::where('user_id', Auth::user()->id)->first()
         ]);
     }
     public function actualizar(Request $request){
@@ -38,15 +40,18 @@ class PerfilController extends Controller
         return redirect()->back();
     }
     public function carregar(Request $request){
-        $file = "";
-        $imagem = $request->file('image');
-        return $imagem->getClientOriginalName();
-        
-        if(!Auth::user()->image){
-           
-        } else {
-
+       
+        if(!$request->file('imagem')){
+            return redirect()->back()->with('success','É obrigatorio carregar uma imagem.');
         }
-        return "carregar image";
+        $imagem = $request->file('imagem');
+        $upload =  $request->file('imagem')->getClientOriginalName();
+        $file = $imagem->move('perfil', $upload);
+        
+        $perfil = Perfil::where('user_id', Auth::user()->id)->first();
+        $perfil->imagem = $file;
+        $perfil->save();
+        
+        return redirect()->back()->with('success','Perfil actualizado com sucesso.');
     }
 }
